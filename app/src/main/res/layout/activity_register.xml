@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    tools:context=".RegisterActivity"
+    android:background="@color/white"
+    android:layout_alignParentBottom="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/purple_50"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Create an Account"
+            android:textSize="@dimen/dimen_20dp"
+            android:paddingVertical="@dimen/heading_padding_vertical"
+            android:paddingLeft="@dimen/heading_padding_left"
+            android:textStyle="bold"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="0dp"
+            android:background="@color/white">
+
+            <com.mikhaellopez.circularimageview.CircularImageView
+                android:id="@+id/imgProfile"
+                android:layout_width="@dimen/toolbar_profile_width"
+                android:layout_height="@dimen/toolbar_profile_width"
+                android:layout_marginTop="@dimen/activity_padding_top"
+                android:layout_marginBottom="@dimen/activity_padding_bottom"
+                android:scaleType="centerInside"
+                android:src="@drawable/profile2"
+                app:civ_border_color="@android:color/white"
+                android:layout_centerHorizontal="true"
+                app:civ_border_width="2dp" />
+
+            <com.mikhaellopez.circularimageview.CircularImageView
+                android:id="@+id/imgPlus"
+                android:layout_width="@dimen/ic_plus_width"
+                android:layout_height="@dimen/ic_plus_width"
+                android:layout_alignBottom="@id/imgProfile"
+                android:layout_alignRight="@+id/imgProfile"
+                android:src="@drawable/ic_plus"
+                app:civ_shadow="true"
+                app:civ_shadow_radius="1dp" />
+
+        </RelativeLayout>
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingHorizontal="25dp"
+            android:paddingTop="12dp"
+            android:gravity="center_horizontal"
+            android:background="@color/white">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="-14dp"
+                android:layout_marginBottom="@dimen/form_padding"
+                app:boxBackgroundColor="@color/white"
+                app:boxStrokeColor="@color/purple_200">
+
+                <EditText
+                    android:id="@+id/edtTxtEmail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Email"
+                    android:inputType="textEmailAddress" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/form_padding"
+                android:layout_marginBottom="@dimen/form_padding"
+                app:boxBackgroundColor="@color/white"
+                app:boxStrokeColor="@color/purple_200">
+
+                <EditText
+                    android:id="@+id/edtTxtPwd"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Password"
+                    android:inputType="textPassword" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/form_padding"
+                android:layout_marginBottom="@dimen/form_padding"
+                app:boxBackgroundColor="@color/white"
+                app:boxStrokeColor="@color/purple_200">
+
+                <EditText
+                    android:id="@+id/edtTxtConfirmPsw"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Confirm Password"
+                    android:inputType="textPassword" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/form_padding"
+                android:layout_marginBottom="@dimen/form_padding"
+                app:boxBackgroundColor="@color/white"
+                app:boxStrokeColor="@color/purple_200">
+
+                <EditText
+                    android:id="@+id/edtTxtUsername"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Username"
+                    android:inputType="textPersonName" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/form_padding"
+                android:layout_marginBottom="@dimen/form_padding"
+                app:boxBackgroundColor="@color/white"
+                app:boxStrokeColor="@color/purple_200">
+
+                <EditText
+                    android:id="@+id/edtTxtBio"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="A Short Bio"
+                    android:inputType="text" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnRegister"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="25dp"
+                android:background="@color/purple_700"
+                android:padding="12dp"
+                android:text="Create Account"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/txtSignin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="0dp"
+                android:layout_marginBottom="0dp"
+                android:gravity="center"
+                android:text="Already have an account? Sign In"
+                android:textColor="@color/black"
+                android:textSize="18dp" />
+
+        </LinearLayout>
+
+        <ProgressBar
+            android:id="@+id/progressBarRegister"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:visibility="gone" />
+
+    </RelativeLayout>
+
+
+</LinearLayout>

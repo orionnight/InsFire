@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "919279451998",
+    "project_id": "insfire-81b06",
+    "storage_bucket": "insfire-81b06.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:919279451998:android:1506a5e73e8431028959cf",
+        "android_client_info": {
+          "package_name": "edu.uoft.ranhe.insfire"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "919279451998-bfug739f6kbbipfg5litp8ec4olt343k.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBMgANJLrXh5X1ewD05k1T6qoDoNnOwamw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "919279451998-bfug739f6kbbipfg5litp8ec4olt343k.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
