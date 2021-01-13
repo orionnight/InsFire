@@ -1,6 +1,8 @@
 package edu.uoft.ranhe.insfire;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -11,17 +13,26 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.ActivityCompat;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.request.RequestOptions;
+import com.bumptech.glide.request.target.BitmapImageViewTarget;
+import com.bumptech.glide.request.target.CustomViewTarget;
+import com.bumptech.glide.request.target.SimpleTarget;
+import com.bumptech.glide.request.transition.Transition;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 import java.util.Objects;
 
@@ -29,6 +40,7 @@ public class ProfileActivity extends AppCompatActivity {
 
     private static final String TAG = "ProfileActivity";
     private String userID;
+    private String profileImgUrl;
 
     private TextView txtUsername, txtBio;
     private ImageView imgProfile;
@@ -36,6 +48,8 @@ public class ProfileActivity extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
     private FirebaseFirestore db;
+    private FirebaseStorage storage;
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -45,6 +59,7 @@ public class ProfileActivity extends AppCompatActivity {
         initViews();
         mAuth = FirebaseAuth.getInstance();
         db = FirebaseFirestore.getInstance();
+        storage = FirebaseStorage.getInstance();
 
         displayUserInfo();
 
@@ -55,24 +70,59 @@ public class ProfileActivity extends AppCompatActivity {
 
 
         userID = Objects.requireNonNull(mAuth.getCurrentUser()).getUid();
-        System.out.println("!!!!!!!!!!!!!!!");
-        System.out.println(userID);
 
-        System.out.println("*******************************");
-
-//        String docID = db.collection("users").document().get().;
-//        System.out.println(docID);
         DocumentReference userDocRef = db.collection("users").document(userID);
 
         userDocRef.get()
                 .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
                     @Override
                     public void onSuccess(DocumentSnapshot documentSnapshot) {
-                        System.out.println("2222222222222222222");
-                        System.out.println(documentSnapshot.getString("username"));
                         txtUsername.setText(documentSnapshot.getString("username"));
                         txtBio.setText(documentSnapshot.getString("bio"));
-//                        edtTxtUsername.setText(documentSnapshot.getString("profileImgUrl"));
+                        profileImgUrl = documentSnapshot.getString("profileImgUrl");
+
+                        //load profile image
+//                        StorageReference storageRef = storage.getReference();
+//                        StorageReference gsReference = storage.getReferenceFromUrl(profileImgUrl);
+                        try {
+//                            System.out.println("!!!!!!!!!!!!!!!!!!00000000000000000000000#########000000000000000000");
+//                            System.out.println(profileImgUrl);
+
+                            RequestOptions options = new RequestOptions()
+                                    .placeholder(R.drawable.profile2)
+                                    .error(R.drawable.profile);
+
+                            Glide.with(ProfileActivity.this).load(profileImgUrl).apply(options).into(imgProfile);
+
+//                            Glide.with( ProfileActivity.this)
+//                                    .load(profileImgUrl)
+//                                    .into(imgProfile);
+
+//                            Glide.with(getApplicationContext()).asBitmap().load(downloadUri).into(new CustomTarget<Bitmap>() {
+//
+//                                @Override
+//                                public void onResourceReady(@NonNull Bitmap resource, @Nullable Transition<? super Bitmap> transition) {
+//                                    System.out.println("@@@@@@@@@@@@@@@@@@@@@@");
+//                                    imgProfile.setImageBitmap(resource);
+//
+//
+//                                }
+//
+//                                @Override
+//                                public void onLoadCleared(@Nullable Drawable placeholder) {
+//
+//
+//                                }
+//                            });
+
+
+//                            Glide.with(ProfileActivity.this)
+//                                    .load(profileImgUrl)
+//                                    .into(imgProfile);
+                        } catch (Exception e) {
+                            //TODO
+                        }
+
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
@@ -82,16 +132,7 @@ public class ProfileActivity extends AppCompatActivity {
                     }
                 });
 
-//        documentReference.addSnapshotListener(ProfileActivity.this, new EventListener<DocumentSnapshot>() {
-//            @Override
-//            public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
-//                System.out.println("2222222222222222222");
-//                System.out.println(documentSnapshot.getString("username"));
-//                txtUsername.setText(documentSnapshot.getString("username"));
-//                txtBio.setText(documentSnapshot.getString("bio"));
-////
-//            }
-//        });
+
     }
 
 

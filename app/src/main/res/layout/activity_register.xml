@@ -4,61 +4,57 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:gravity="center_horizontal"
-    tools:context=".RegisterActivity"
+    android:layout_alignParentBottom="true"
     android:background="@color/white"
-    android:layout_alignParentBottom="true">
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    tools:context=".RegisterActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/purple_50"
-        >
+        android:background="@color/purple_50">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Create an Account"
-            android:textSize="@dimen/dimen_20dp"
             android:paddingVertical="@dimen/heading_padding_vertical"
             android:paddingLeft="@dimen/heading_padding_left"
-            android:textStyle="bold"/>
+            android:text="Create an Account"
+            android:textSize="@dimen/dimen_20dp"
+            android:textStyle="bold" />
     </LinearLayout>
 
-    <LinearLayout
+
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="0dp"
-            android:background="@color/white">
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:padding="0dp">
 
-            <com.mikhaellopez.circularimageview.CircularImageView
-                android:id="@+id/imgProfile"
-                android:layout_width="@dimen/toolbar_profile_width"
-                android:layout_height="@dimen/toolbar_profile_width"
-                android:layout_marginTop="@dimen/activity_padding_top"
-                android:layout_marginBottom="@dimen/activity_padding_bottom"
-                android:scaleType="centerInside"
-                android:src="@drawable/profile2"
-                app:civ_border_color="@android:color/white"
-                android:layout_centerHorizontal="true"
-                app:civ_border_width="2dp" />
+        <com.mikhaellopez.circularimageview.CircularImageView
+            android:id="@+id/imgProfile"
+            android:layout_width="@dimen/toolbar_profile_width"
+            android:layout_height="@dimen/toolbar_profile_width"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/activity_padding_top"
+            android:layout_marginBottom="@dimen/activity_padding_bottom"
+            android:scaleType="centerInside"
+            android:src="@drawable/profile2"
+            app:civ_border_color="@android:color/white"
+            app:civ_border_width="2dp" />
 
-            <com.mikhaellopez.circularimageview.CircularImageView
-                android:id="@+id/imgPlus"
-                android:layout_width="@dimen/ic_plus_width"
-                android:layout_height="@dimen/ic_plus_width"
-                android:layout_alignBottom="@id/imgProfile"
-                android:layout_alignRight="@+id/imgProfile"
-                android:src="@drawable/ic_plus"
-                app:civ_shadow="true"
-                app:civ_shadow_radius="1dp" />
+        <com.mikhaellopez.circularimageview.CircularImageView
+            android:id="@+id/imgPlus"
+            android:layout_width="@dimen/ic_plus_width"
+            android:layout_height="@dimen/ic_plus_width"
+            android:layout_alignRight="@+id/imgProfile"
+            android:layout_alignBottom="@id/imgProfile"
+            android:src="@drawable/ic_plus"
+            app:civ_shadow="true"
+            app:civ_shadow_radius="1dp" />
 
-        </RelativeLayout>
-    </LinearLayout>
+    </RelativeLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -67,11 +63,11 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:gravity="center_horizontal"
             android:orientation="vertical"
             android:paddingHorizontal="25dp"
-            android:paddingTop="12dp"
-            android:gravity="center_horizontal"
-            android:background="@color/white">
+            android:paddingTop="12dp">
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"

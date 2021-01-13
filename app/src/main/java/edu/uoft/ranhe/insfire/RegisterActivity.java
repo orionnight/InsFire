@@ -69,7 +69,7 @@ public class RegisterActivity extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
     private FirebaseFirestore db;
-    private StorageReference mStorageRef;
+    private FirebaseStorage storage;
     private DocumentReference documentReference;
 
 
@@ -81,6 +81,7 @@ public class RegisterActivity extends AppCompatActivity {
         initViews();
         mAuth = FirebaseAuth.getInstance();
         db = FirebaseFirestore.getInstance();
+        storage = FirebaseStorage.getInstance();
 
         btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -296,14 +297,29 @@ public class RegisterActivity extends AppCompatActivity {
                     ByteArrayOutputStream baos = new ByteArrayOutputStream();
                     profileImgBitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
                     byte[] profileImgBitmap_data = baos.toByteArray();
-                    mStorageRef = FirebaseStorage.getInstance().getReference("profilepics/" + System.currentTimeMillis() + ".jpg");
+                    StorageReference storageRef = storage.getReference("profilepics/" + System.currentTimeMillis() + ".jpg");
 
-                    mStorageRef.putBytes(profileImgBitmap_data).
+                    storageRef.putBytes(profileImgBitmap_data).
                             addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                                 @Override
                                 public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                                    UploadTask.TaskSnapshot downloadUri = taskSnapshot.getTask().getResult();
-                                    profileImgUrl = downloadUri.toString();
+
+                                    //TODO
+                                    System.out.println("00000000000000!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+                                    Task<Uri> uri = taskSnapshot.getStorage().getDownloadUrl();
+                                    while(!uri.isComplete());
+                                    profileImgUrl = uri.getResult().toString();
+
+//                                    Toast.makeText(RegisterActivity.this, "Upload Success, download URL " +
+//                                            profileImgUrl, Toast.LENGTH_LONG).show();
+
+
+//                                    profileImgUrl = taskSnapshot.getMetadata().getReference().getDownloadUrl().toString();
+//
+//                                    System.out.println(profileImgUrl);
+//                                    UploadTask.TaskSnapshot downloadUri = taskSnapshot.getTask().getResult();
+//                                    UploadTask.TaskSnapshot downloadUri = taskSnapshot.getTask().getResult();
+//                                    profileImgUrl = downloadUri.toString();
 
                                     progressBarRegister.setVisibility(View.GONE);
                                     Toast.makeText(getApplicationContext(),

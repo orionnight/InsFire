@@ -18,43 +18,90 @@
         android:background="@color/purple_50" />
 
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent"
+        android:background="@color/white">
+
 
         <RelativeLayout
+            android:id="@+id/relLayout2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/white"
-            android:padding="0dp">
+            android:layout_below="@+id/relLayout1"
+            android:background="@color/white">
 
-            <com.mikhaellopez.circularimageview.CircularImageView
-                android:id="@+id/imgProfile"
-                android:layout_width="@dimen/toolbar_profile_width"
-                android:layout_height="@dimen/toolbar_profile_width"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="@dimen/activity_padding_top"
-                android:layout_marginBottom="@dimen/activity_padding_bottom"
-                android:scaleType="centerInside"
-                android:src="@drawable/profile2"
-                app:civ_border_color="@android:color/white"
-                app:civ_border_width="2dp" />
+            <LinearLayout
+                android:id="@+id/linLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
+                android:orientation="horizontal"
+                android:weightSum="100">
+
+
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="25dp"
+                    android:layout_weight="25">
+
+                    <com.mikhaellopez.circularimageview.CircularImageView
+                        android:id="@+id/imgProfile"
+                        android:layout_width="@dimen/toolbar_profile_width"
+                        android:layout_height="@dimen/toolbar_profile_width"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginTop="0dp"
+                        android:layout_marginBottom="@dimen/activity_padding_bottom"
+                        android:scaleType="centerInside"
+                        android:src="@drawable/profile2"
+                        app:civ_border_color="@android:color/white"
+                        app:civ_border_width="2dp" />
+
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginEnd="30dp"
+                    android:layout_weight="75">
+
+                    <include layout="@layout/snippet_top_view_profile" />
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+
+            <RelativeLayout
+                android:id="@+id/relLayout3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/linLayout"
+                android:layout_marginTop="@dimen/dimen_20dp">
+
+                <GridView
+                    android:id="@+id/gridView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:horizontalSpacing="1dp"
+                    android:numColumns="3"
+                    android:stretchMode="columnWidth"
+                    android:verticalSpacing="1dp"></GridView>
+
+
+            </RelativeLayout>
 
 
         </RelativeLayout>
-    </LinearLayout>
 
-    <TextView
-        android:id="@+id/txtBio"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:hint="@string/a_short_bio" />
 
-    <TextView
-        android:id="@+id/txtUsername"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:hint="@string/username" />
+    </RelativeLayout>
 
 
 </LinearLayout>
