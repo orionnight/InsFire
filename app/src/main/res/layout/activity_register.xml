@@ -20,7 +20,7 @@
             android:layout_height="wrap_content"
             android:paddingVertical="@dimen/heading_padding_vertical"
             android:paddingLeft="@dimen/heading_padding_left"
-            android:text="Create an Account"
+            android:text="@string/create_an_account"
             android:textSize="@dimen/dimen_20dp"
             android:textStyle="bold" />
     </LinearLayout>

@@ -22,5 +22,6 @@
     <string name="go_to_settings">GOTO SETTINGS</string>
     <string name="a_short_bio">A Short Bio</string>
     <string name="username">Username</string>
+    <string name="create_an_account">Create an Account</string>
 
 </resources>

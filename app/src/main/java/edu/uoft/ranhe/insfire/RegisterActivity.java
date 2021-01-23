@@ -154,7 +154,7 @@ public class RegisterActivity extends AppCompatActivity {
         startActivityForResult(intent, CAMERA_CODE);
     }
 
-    private void launchGallery() {
+    private void launchGallery() {  //TODO: rotation
         Intent intent = new Intent();
         intent.setType("image/*");
         intent.setAction(Intent.ACTION_GET_CONTENT);
