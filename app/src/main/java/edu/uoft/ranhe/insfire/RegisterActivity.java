@@ -126,6 +126,8 @@ public class RegisterActivity extends AppCompatActivity {
                     imgProfile.setImageBitmap(profileImgBitmap);
 
 //                    uploadImgToFirebaseStorage(profileImgBitmap);
+                    Toast.makeText(getApplicationContext(),
+                            "Profile image selected", Toast.LENGTH_SHORT).show();
                 }
 
             case GALLERY_CODE:
